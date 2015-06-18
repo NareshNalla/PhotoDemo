@@ -29,7 +29,7 @@ public class ImageController {
 	public String printHello(ModelMap model) {
 
 		model.addAttribute("image", new ImagePojo());
-		return "upload_ss";
+		return "upload";
 	}
 
 	@RequestMapping(value="/upload1.spring",method=RequestMethod.POST)
@@ -47,7 +47,7 @@ public class ImageController {
 			} catch (Exception e) {
 				modelAndView.addObject("failMessage", image.getImageFile().getOriginalFilename()+"=> "+e.getMessage());
 			}
-			modelAndView.setViewName("upload_ss");
+			modelAndView.setViewName("upload");
 		} else {
 			modelAndView.addObject("emptyFile", "No file is been uploaded");
 		}
