@@ -8,9 +8,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome</title>
 </head>
 <body>
+
 		<form:form action="upload1.spring" method="post" commandName="image" enctype="multipart/form-data" >
 			<p>
 				<form:label path="imageName">Name :</form:label><form:input type="text" path="imageName"/>
