@@ -1,0 +1,40 @@
+.candidateLogin {
+	
+    width: 440px;
+    float: right;
+}
+
+.login_box .forgot_pass {
+    background: #FFF no-repeat scroll left center transparent;
+    display: inline;
+    float: left;
+    font-weight: bold;
+    margin: 8px 34px 0 95px;
+    text-transform: capitalize;
+    width: auto;
+    padding: 0 0 0 0px;
+}
+
+.headertitle  {
+    -moz-border-radius: 5px 5px 0 0;
+    background: none repeat scroll 0 0 #D6C69E;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+    text-transform: capitalize;
+    width: 125px;
+    float:left;
+    margin-left: 5px;
+}
+.unselected{
+    background: none repeat scroll 0 0 #FFF;
+}
+
+table {
+	border: 0px none;
+}
+
+table td {
+	border: 0px none;
+}
