@@ -29,8 +29,11 @@
 				<h3>My Dashboard</h3>
 				<hr>
 				<div class="box_outer">
-					<a href="upload.spring">Upload</a>
+					<a href="upload.spring">Upload</a> &nbsp;
+					<a href="profile.spring">Image</a> &nbsp;
+					<a href="allimages.spring">ImageList</a> &nbsp;
 				</div>
+				
 			</div>
 
 		</div>

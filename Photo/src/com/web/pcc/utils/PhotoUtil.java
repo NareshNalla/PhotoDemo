@@ -39,7 +39,7 @@ public static Logger getLogger(){
 
 		log.debug("Server File Location="+ serverFile.getAbsolutePath());
 		
-		return file.getOriginalFilename();
+		return serverFile.getAbsolutePath();
 	}
  	// TODO insert multiple files
 
