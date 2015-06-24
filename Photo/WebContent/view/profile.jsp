@@ -40,11 +40,7 @@
 		aria-describedby="example_info">
 		<thead>
 			<tr role="row">
-				<th class="sorting_asc" role="columnheader" tabindex="0"
-					aria-controls="example" rowspan="1" colspan="1"
-					style="width: 100px;" aria-sort="ascending"
-					aria-label="User Id: activate to sort column descending">
-					Image ID</th>
+			
 
 					</tr>
 		</thead>
@@ -53,12 +49,12 @@
 		</tfoot>
 		<tbody role="alert" aria-live="polite" aria-relevant="all">
 			<tr class="odd">
-				<c:forEach var="e" items="${imagePojoList}">
+				
 					<tbody role="alert" aria-live="polite" aria-relevant="all">
 						<tr class="odd">
 
 							<td width="30%"  class=" sorting_1"><span
-								style="float: left;"> </span> <img style="width:100px; height:100px;" alt="name" src="${e.getImg_Url()}" /> </td>
+								style="float: left;"> </span><c:forEach var="e" items="${imagePojoList}"> <img style="width:100px; height:100px;" alt="name" src="${e.getImg_Url()}" /> </td>
 
 														
 						</tr>
