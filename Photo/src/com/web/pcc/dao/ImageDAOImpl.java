@@ -29,7 +29,7 @@ public class ImageDAOImpl implements  ImageDAO   {
 	private Logger log = PhotoUtil.getLogger();
 	
 	
-	public boolean uploadImage(int img_id, String img_title,
+	public boolean uploadImage(final int img_id, final String img_title,
 			MultipartFile img_data) {
 		log.debug("IN ImageDAOImpl.uploadImage ");
 

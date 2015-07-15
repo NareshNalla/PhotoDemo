@@ -1809,8 +1809,9 @@ iframe {
 table {
 	border-collapse: collapse;
 	margin: 0 auto;
-	text-align: left;
+	text-align: center;
 	width: 100%;
+	align:center;
 }
 
 table th {
@@ -1836,7 +1837,7 @@ table td {
 	display: inline-block;
 	padding: 0 50px 0 0;
 	vertical-align: top;
-	text-align: left;
+	text-align: center;
 }
 
 /*
