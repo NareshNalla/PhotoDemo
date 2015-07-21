@@ -1,1 +1,1 @@
-<% response.sendRedirect("upload.spring");%>
+<% response.sendRedirect("viewall.spring");%>

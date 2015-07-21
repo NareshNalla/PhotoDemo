@@ -7,6 +7,13 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImagePojo {
 	private String imgId;
 	private String imageName;
+	private String imageDesc;
+	public String getImageDesc() {
+		return imageDesc;
+	}
+	public void setImageDesc(String imageDesc) {
+		this.imageDesc = imageDesc;
+	}
 	private MultipartFile imageFile;
 	private String img_Url;
 	private List<Object> imagesAll;
