@@ -2,160 +2,158 @@
 <html>
 
 
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <title>WelCome | tag your pictures</title>
-<link rel="stylesheet" href="css/style_blue.css" type="text/css">
-<link rel="stylesheet" href="css/feedback.css" type="text/css" media="screen">
-<link rel="stylesheet" href="css/profile.css" type="text/css"media="screen">
-<script src="view/profile.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
 
-    $('.container').hide(); 
+<!-- css -->
+<link rel="stylesheet" href="css/profile.css" type="text/css"	media="screen">
+	
+<!-- bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+<!-- jquery -->
+  <script 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    $('#btn-post').click(function() {
+<!-- JavaScript -->
+  <script src="view/profile.js"></script>
 
-        $('.container').hide();
+  <script type="text/javascript">
+		$(document).ready(function() {
 
-    });
+			$('.formContainer').hide();
 
-    $('#btn-game').click(function() {
+			$('#btn-uploadHide').click(function() {
 
-        $('.container').hide();
-        $('#game_container').show();
-    });
-});
-</script>
+				$('.formContainer').hide();
 
+			});
+			$('#btn-uploadshow').click(function() {
+
+				$('.formContainer').hide();
+				$('#form_container').show();
+			});
+		});
+  </script>
+<!-- head end -->
 </head>
+
+<!-- body -->
 <body>
 	<div id="header">
-			<h1>
+		<h1>
 			<a href="allimages.spring?pageNo=1"><img src="images/logo.png" alt="pcc"></a>
 		</h1>
 
-			<!-- top nav end -->
-			<ul id="topnav">
-				<li><a href="logout.spring">Logout</a></li>
-			</ul>
-			<!-- topnav end -->
-
-
-		</div>
-		<!-- header end -->
-		<div id="content">
-			<div id="middle_section">
-				<h3>My Dashboard</h3>
-				<hr>
-				
-		   <div class="center">
-		   <div class="btn-group" align="center" data-toggle="buttons-radio"><!-- onclick="uploadHide()" -->
-  <button id="btn-post" class="btn btn btn-primary active" type="button" >Clear</button>
-  <button id="btn-game" class="btn btn btn-primary" type="button" >Upload</button>
-</div>
-		   
-				
-<div class="container" align="center" id="game_container" >
-
-
-		<form style="align:center;" style="align:center;" action="upload1.spring" method="post"  enctype="multipart/form-data" >
-			<p>
-				<lable path="imageDesc">Description :</lable><input type="text" name="imageDesc"/>
-			</p>
-			
-			<p>
-				<lable path="imageFile">Upload File:</lable><input type="file" name="imageFile"/>
-			</p>
-			
-			<p class="remember"><input type=submit class="btn_blue" value=submit></p>
-			
-		</form>
-		
+		<!-- top nav -->
+		<ul id="topnav">
+			<li><a href="logout.spring">Logout</a></li>
+		</ul>
+		<!-- topnav end -->
 	</div>
-	<div class="dataTables_info" id="example_info">
-						<h5>Showing 1 to ${i} of <b> ${param.pageNo} </b>entries </h5>
-						<div style="position: absolute; top: left: 500px;">
-							<h6>
-								&nbsp;
-								<%--For displaying Previous link except for the 1st page --%>
-								<c:if test="${param.pageNo> 1}">
-
-									<td><a href="allimages.spring?pageNo=${param.pageNo-1}">Previous
-											&nbsp;</a></td>
-								</c:if>
-
-								<c:forEach begin="1" end="${i}" var="j">
-									<c:choose>
-										<c:when test="${param.pageNo eq j}">
-											<td>${j}</td>
-										</c:when>
-										<c:otherwise>
-											<a href="allimages.spring?pageNo=${j}">${j} </a>&nbsp; 
-									</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<%--For displaying Next link --%>
-
-								<c:if test="${param.pageNo lt i}">
-									<td><a href="allimages.spring?pageNo=${param.pageNo+1}">Next
-											&nbsp; </a></td>
-								</c:if>
+	<!-- Main nav end -->
+	<div id="content">
+		<div id="middle_section">
+			<ul class="nav nav-tabs">
+			    <li class="active">
+			        <a href="#">Home</a>
+			    </li>
+			    
+			</ul>
+<!-- header end -->
+	<hr>
 	
+	<!-- adds tab -->
+	<div class="row">
+    	<div class="col-sm-3" style="background-color:none;">
+    ADDS
+    </div>
+    
+    <!-- photos tab -->
+	<div class="col-sm-6" style="background-color:lavenderblush;">
 	
-</div>
-</div>
+    	<div align="center" >
+    	    	<!-- <div class="btn-group" align="center" data-toggle="buttons-radio"> -->
+	    	<button type="button"  id="btn-uploadshow" class="btn btn-primary btn-block">Upload</button>
+	    	<button type="button" id="btn-uploadHide" class="btn btn btn-primary active">Clear</button> 
+    	</div>
+	
+
+		<div class="formContainer" align="center" id="form_container">
+     			<form  class="form-inline" role="form"  style="align:center;" action="upload1.spring" method="post"
+						enctype="multipart/form-data">
+					<div class="form-group">
+      					<label class="sr-only" for="text">Description :</label>
+      					<input type="text"  name="imageDesc" class="form-control" id="imageFile" placeholder="Enter Description about photo">
+    				</div>
+    				<div class="form-group">
+      					<label class="sr-only" for="text">Upload File:</label>
+      					<input type="file" name="imageFile" class="form-control" id="imageFile" placeholder="Choose uplode file">
+    				</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+	  </div>
+<!-- pagination -->
+
+<table style="align: center;">
+	
+		<tr><td>
+				Showing 1 to ${i} of <b> ${param.pageNo} </b>entries
+						</td></tr>
+						<tr><td>
+	<!-- displaying Previous link except for the 1st page  -->
+							<c:choose> 
+								<c:when test="${param.pageNo gt 1}">
+									<a href="allimages.spring?pageNo=${param.pageNo-1}">Previous &nbsp;</a>
+								</c:when> 
+									<c:otherwise>Previous</c:otherwise>   
+							</c:choose>
+	<!-- Displaying page Numbers -->
+							<c:forEach begin="1" end="${i}" var="j">
+								<c:choose>
+									<c:when test="${param.pageNo eq j}">
+										${j}
+									</c:when>
+									<c:otherwise>
+										<a href="allimages.spring?pageNo=${j}">${j} </a> 
+								</c:otherwise>
+								</c:choose>
+							</c:forEach>
+	<%--For displaying Next link --%>
+								<c:choose> 
+								<c:when test="${param.pageNo lt i}">
+									<a href="allimages.spring?pageNo=${param.pageNo+1}">Next &nbsp; </a>
+								</c:when> 
+									<c:otherwise>Next</c:otherwise>   
+							</c:choose>
+						
+					</td></tr> 
+					<tr><td><br><br>		
+    
+<!-- pagination end-->
+
+<div class="container" id="imagetable" align="justify"></div>
 				
+					
+					<c:forEach var="e" items="${imagePojoList}">
+								<tr><td>${e.getImageDesc()}<br> ${e.getImageName()} </td></tr>
+										<tr><td><img  alt="${e.getImageName()}" style="align:center;" width= 500px; height= 500px;
+										 src="${e.getImg_Url()}" />
+									</td></tr><br><br>
+
+							</c:forEach>
+				</td></tr></table>
+				</div>
 			
-    <table  style="align:center;">
-			<tr>
-				<td>
-				<tr><td>
-				<c:forEach var="e" items="${imagePojoList}"> <table border="1"><tr><td> ${e.getImg_Url()} <br> <img  style="align:center; width:500px; height:500px;" alt="name" src="${e.getImg_Url()}" /> 
-				   </td></tr></table> <br> </td>
-					</tr>
-									
-				</c:forEach>
-				
-	</table> 
-	<div class="dataTables_info" id="example_info">
-						Showing 1 to ${param.i} of <b> ${param.pageNo} </b>entries
-						<div style="position: absolute; top: left: 500px;">
-							<h6>
-								&nbsp;
-								<%--For displaying Previous link except for the 1st page --%>
-								<c:if test="${param.pageNo> 1}">
-
-									<td><a href="allimages.spring?pageNo=${param.pageNo-1}">Previous
-											&nbsp;</a></td>
-								</c:if>
-
-								<c:forEach begin="1" end="${i}" var="j">
-									<c:choose>
-										<c:when test="${param.pageNo eq j}">
-											<td>${j}</td>
-										</c:when>
-										<c:otherwise>
-											<a href="allimages.spring?pageNo=${j}">${j} </a>&nbsp; 
-									</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<%--For displaying Next link --%>
-
-								<c:if test="${param.pageNo lt i}">
-									<td><a href="allimages.spring?pageNo=${param.pageNo+1}">Next
-											&nbsp; </a></td>
-								</c:if>
-	
-	
-</div>
-</div>
-</div>
+    <div class="col-sm-3" style="background-color:none;">
+    ADDS
+    </div>
+    </div>
 
 </body>
 </html>
