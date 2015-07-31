@@ -18,9 +18,9 @@ public class ImageService {
 	private ImagePojo ip;
 			private Logger log = PhotoUtil.getLogger();
 	
-public boolean saveImage(String filePath, String imageName, String imageDesc) {
+public boolean saveImage(String filePath, String imageName, String imageDesc,String commentid) {
 		log.debug("ImageService.uploadImage");
-		boolean flag=idao.saveImage(filePath,imageName,imageDesc);
+		boolean flag=idao.saveImage(filePath,imageName,imageDesc,commentid);
 		log.debug("ImageService.uploadImage return :"+flag);
 		return flag;
 		
@@ -28,11 +28,24 @@ public boolean saveImage(String filePath, String imageName, String imageDesc) {
 	
 public List<ImagePojo> viewAllImagesList() {
 		
-		System.out.println("UserSevice.userGroup");
+		log.debug("ImageService.userGroup");
 		List<ImagePojo> imagePojoList=idao.viewAllImagesList();
 
 		return imagePojoList;
 	}
+
+public boolean addComment(String commentid, String comment) {
+	log.debug("ImageService.addComment");
+	boolean flag=idao.addComment(commentid,comment);
+	return flag;
+}
+
+public List<ImagePojo> viewComments(String commentidf) {
+	log.debug("ImageService.userGroup");
+	List<ImagePojo> imagePojoList=idao.viewComments(commentidf);
+
+	return imagePojoList;
+}
 
 	
 	}

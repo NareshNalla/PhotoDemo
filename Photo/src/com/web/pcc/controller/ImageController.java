@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,8 +46,10 @@ public class ImageController {
 				String filePath=photoUtil.saveImageToServer(image.getImageFile());
 				String imageName=image.getImageFile().getOriginalFilename();
 				String imageDesc=image.getImageDesc();
-				boolean flag=is.saveImage(filePath,imageName,imageDesc);
-				log.debug("In ImageController.uploadImage After Database hit flag="+flag);
+				String commentid="c"+"_"+imageName;
+				boolean flag=is.saveImage(filePath,imageName,imageDesc,commentid);
+				boolean flag1=is.addComment(commentid,"");
+				log.debug("In ImageController.uploadImage After Database hit flag="+flag+flag1);
 
 				modelAndView.addObject("fileName", fileO_Name);
 			} catch (Exception e) {
@@ -56,9 +59,23 @@ public class ImageController {
 		} else {
 			modelAndView.addObject("emptyFile", "No file is been uploaded");
 		}
-		return new ModelAndView("profile"); 
-
+		return new ModelAndView("index"); 
 	}
+
+	@RequestMapping(value="/addComment.spring",method=RequestMethod.POST)
+	public ModelAndView addComment(@ModelAttribute("image") ImagePojo image){
+		log.debug("UserController.userGroupnameAdd");
+		ModelAndView modelAndView=new ModelAndView();
+		String comment=image.getComment();
+		String commentid=image.getCommentid();
+		log.debug(commentid+comment);
+		boolean flag=is.addComment(commentid,comment);
+		if(flag){
+			return new ModelAndView("index");
+		}
+		return new ModelAndView("add_f");
+	}
+	
 	@RequestMapping(value="/allimages.spring", method=RequestMethod.GET)
 	public ModelAndView userHome(HttpServletRequest req,WebRequest wr)throws Exception{
 		log.debug("UserController.userHome");
@@ -92,13 +109,25 @@ public class ImageController {
 
 			System.out.println(size);
 			List<ImagePojo> ll=l.subList(0, last);
-			System.out.println("retrning users.jsp");
-			return new ModelAndView("profile","imagePojoList",ll);
+			System.out.println("retrning index.jsp");
+			return new ModelAndView("index","imagePojoList",ll);
 		}
 		List<ImagePojo> ll=l.subList(first, last);
-		System.out.println("retrning profile.jsp");
-		return new ModelAndView("profile","imagePojoList",ll);
+		log.debug("retrning index.jsp");
+		return new ModelAndView("index","imagePojoList",ll);
 
 	}
+	@RequestMapping(value="/comments.spring", method=RequestMethod.GET)
+	public ModelAndView viewComments(HttpServletRequest req,WebRequest wr)throws Exception{
+		log.debug("ImageController.viewComments");
 
+		String commentidf=req.getParameter("commentidf");
+		log.debug("ImageController.viewComments commentidf="+commentidf);
+		List<ImagePojo> l=is.viewComments(commentidf);
+		log.debug("retrning index.jsp");
+		
+			return new ModelAndView("comments","viewcommentsList",l);
+		}
+	
+		
 };

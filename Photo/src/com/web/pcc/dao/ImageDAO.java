@@ -6,6 +6,7 @@ import com.web.pcc.pojo.ImagePojo;
 
 public interface ImageDAO {
 
-	boolean saveImage(String filePath,String imageName, String imageDesc);
+	boolean saveImage(String filePath,String imageName, String imageDesc,String commentid);
 	List<ImagePojo> viewAllImagesList();
+	List<ImagePojo> viewComments(String commentidf);
 }

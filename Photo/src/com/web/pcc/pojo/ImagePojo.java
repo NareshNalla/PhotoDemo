@@ -5,19 +5,54 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ImagePojo {
-	private String imgId;
+	
 	private String imageName;
 	private String imageDesc;
+	private MultipartFile imageFile;
+	private String img_Url;
+	private List<Object> imagesAll;
+	private Object imageFileO;
+
+	
+	private String commentid;
+	private String comment;
+	
+	private String commentidf;
+	private String comments;
+	
+	
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	public String getCommentidf() {
+		return commentidf;
+	}
+	public void setCommentidf(String commentidf) {
+		this.commentidf = commentidf;
+	}
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	public String getCommentid() {
+		return commentid;
+	}
+	public void setCommentid(String commentid) {
+		this.commentid = commentid;
+	}
+	
 	public String getImageDesc() {
 		return imageDesc;
 	}
 	public void setImageDesc(String imageDesc) {
 		this.imageDesc = imageDesc;
 	}
-	private MultipartFile imageFile;
-	private String img_Url;
-	private List<Object> imagesAll;
-	private Object imageFileO;
+	
 	
 	public List<Object> getImagesAll() {
 		return imagesAll;
@@ -37,12 +72,7 @@ public class ImagePojo {
 	public void setImg_Url(String img_Url) {
 		this.img_Url = img_Url;
 	}
-	public String getImgId() {
-		return imgId;
-	}
-	public void setImgId(String imgId) {
-		this.imgId = imgId;
-	}
+	
 	public String getImageName() {
 		return imageName;
 	}
