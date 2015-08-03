@@ -115,9 +115,9 @@ public class ImageController {
 		List<ImagePojo> ll=l.subList(first, last);
 		log.debug("retrning index.jsp");
 		return new ModelAndView("index","imagePojoList",ll);
-
 	}
-	@RequestMapping(value="/comments.spring", method=RequestMethod.GET)
+	
+	@RequestMapping(value="/viewComments.spring", method=RequestMethod.GET)
 	public ModelAndView viewComments(HttpServletRequest req,WebRequest wr)throws Exception{
 		log.debug("ImageController.viewComments");
 

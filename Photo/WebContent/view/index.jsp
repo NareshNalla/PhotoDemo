@@ -21,53 +21,44 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!-- JavaScript -->
-  <script src="script/profile.js"></script>
-  <script src="script/index.js"></script>
-
-  <script type="text/javascript">
-		$(document).ready(function() {
-			$('.formContainer').hide();
-			$('#btn-uploadHide').click(function() {
-				$('.formContainer').hide();
-			});
-			$('#btn-uploadshow').click(function() {
-				$('.formContainer').hide();
-				$('#form_container').show();
-			});
-		});
-  </script>
-  
-<script type="text/javascript">
-
-$(document).ready(function(){
-	  $("h4").click(function(){
-	    $('.hidden').hide();
-	    $(this).next().toggle();      
-	  });
-	});
-
-</script>
- 
- 
-    
+   <script src="script/index.js"></script>
+   
+<!-- upload form show & hide -->
+			  <script type="text/javascript">
+					$(document).ready(function() {
+						$('.formContainer').hide();
+						$('#btn-uploadHide').click(function() {
+							$('.formContainer').hide();
+						});
+						$('#btn-uploadshow').click(function() {
+							$('.formContainer').hide();
+							$('#form_container').show();
+						});
+					});
+			  </script>
+ <!-- comments show & hide -->
+			<script type="text/javascript">
+			
+			$(document).ready(function(){
+				  $("h4").click(function(){
+				    $('.hidden').hide();
+				    $(this).next().toggle();      
+				  });
+				});
+			
+			</script>
+   
 <!-- head end -->
 </head>
 
 <!-- body -->
-<body onload="contentnewslisting();">
-
-<div id="ajax-panel"></div>
+	<body onload="contentnewslisting();">
 
 	<div id="header">
 		<h1>
 			<a href="allimages.spring?pageNo=1"><img src="images/logo.png" alt="pcc"></a>
 		</h1>
 
-		<!-- top nav -->
-		<ul id="topnav">
-			<li><a href="logout.spring">Logout</a></li>
-		</ul>
-		<!-- topnav end -->
 	</div>
 	<!-- Main nav end -->
 	<div id="content">
@@ -155,9 +146,7 @@ $(document).ready(function(){
     
 <!-- pagination end-->
 
-<div id="newsTable" class="clear">
-
-</div>
+<div id="newsTable" class="clear"> </div>
 <div class="container" id="imagetable" align="justify"></div>
 					<c:forEach var="e" items="${imagePojoList}">
 								<tr><td>${e.getImageDesc()}<br> ${e.getImageName()} </td></tr>
@@ -176,7 +165,6 @@ $(document).ready(function(){
 			</form>
 		</div></td></tr><tr><td>
 		
-		<a href="#" onclick="getComments(\''${e.getCommentid()}'\'); ">Comments Show</a> &nbsp;
 		
 		<a href="viewComments.spring?commentidf=${e.getCommentid()}">Show Comments</a>
 		<div id="newsCommentsTable"> </div>

@@ -7,7 +7,7 @@
 			 <param-value>
 			 	/WEB-INF/ds-servlet.xml
 			 	/WEB-INF/jdbc.xml
-			 	/WEB-INF/mail.xml
+			 	
 			 	<!-- /WEB-INF/messages_en.properties -->
 			 </param-value>
 		</init-param>	
