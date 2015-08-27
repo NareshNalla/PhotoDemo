@@ -7,12 +7,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<context:component-scan base-package="com.web.pcc"/>
+	<context:component-scan base-package="com.web.pcc" />
 	<mvc:resources mapping="/WebContent/**" location="/WebContent/" />
 
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven />
-	
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -22,17 +22,17 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	
-	  <!--   <bean id="image" class="com.web.pcc.pojo.Image1" /> -->
-	    
-	
+
+	<!-- <bean id="image" class="com.web.pcc.pojo.Image1" /> -->
+
+
 	<bean id="messageSource"
-        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:message" />
-        <!-- <property name="defaultEncoding" value="UTF-8"/> -->
-    </bean>
-    
-    <bean id="multipartResolver"
-    class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-	
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:message" />
+		<!-- <property name="defaultEncoding" value="UTF-8"/> -->
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 </beans>

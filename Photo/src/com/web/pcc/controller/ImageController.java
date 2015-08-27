@@ -38,18 +38,30 @@ public class ImageController {
 		/*String tempLocation = System.getProperty("dir.home") +File.separator+"temp";
 		log.debug("tempLocation"+tempLocation);*/
 		ModelAndView modelAndView=new ModelAndView();
+		PhotoUtil photoUtil=new PhotoUtil();
+		
 		String fileO_Name=image.getImageFile().getOriginalFilename();
+		String tagName=image.getTagName();
+		String tagid="";
+		String commentid="";
+		log.debug("ImageController.uploadImage :: fileO_Name:"+fileO_Name+" tagName:"+tagName+" tagid:"+tagid+" commentid:"+commentid);
+		
+		String filePath=photoUtil.saveImageToServer(image.getImageFile());
+		String imageName=image.getImageFile().getOriginalFilename();
+		String imageDesc=image.getImageDesc();
+		
 
 		if (!image.getImageFile().isEmpty()) {
 			try {
-				PhotoUtil photoUtil=new PhotoUtil();
-				String filePath=photoUtil.saveImageToServer(image.getImageFile());
-				String imageName=image.getImageFile().getOriginalFilename();
-				String imageDesc=image.getImageDesc();
-				String commentid="c"+"_"+imageName;
-				boolean flag=is.saveImage(filePath,imageName,imageDesc,commentid);
+				
+				commentid="c"+"_"+imageName;
+				tagid="t"+"_"+imageName;
+				
+				boolean flag=is.saveImage(filePath,imageName,imageDesc,commentid,tagid);
 				boolean flag1=is.addComment(commentid,"");
-				log.debug("In ImageController.uploadImage After Database hit flag="+flag+flag1);
+				boolean flag2=is.addTag(tagid,tagName);
+				boolean flag3=is.addTagNames(tagName);
+				log.debug("In ImageController.uploadImage After Database hit flag="+flag+flag1+flag2+flag3);
 
 				modelAndView.addObject("fileName", fileO_Name);
 			} catch (Exception e) {
@@ -64,7 +76,7 @@ public class ImageController {
 
 	@RequestMapping(value="/addComment.spring",method=RequestMethod.POST)
 	public ModelAndView addComment(@ModelAttribute("image") ImagePojo image){
-		log.debug("UserController.userGroupnameAdd");
+		log.debug("ImageController.addComment");
 		ModelAndView modelAndView=new ModelAndView();
 		String comment=image.getComment();
 		String commentid=image.getCommentid();
@@ -76,9 +88,26 @@ public class ImageController {
 		return new ModelAndView("add_f");
 	}
 	
+	@RequestMapping(value="/addTags.spring",method=RequestMethod.POST)
+	public ModelAndView addTag(@ModelAttribute("image") ImagePojo image){
+		log.debug("ImageController.addTag");
+		ModelAndView modelAndView=new ModelAndView();
+		String tagName=image.getTagName();
+		String tagid=image.getTagid();
+		log.debug("tagid:"+tagid +", tagName:"+tagName);
+		/*TODO*/
+		//iterate with String
+		
+		boolean flag=is.addTag(tagName,tagid);
+		if(flag){
+			return new ModelAndView("index");
+		}
+		return new ModelAndView("add_f");
+	}
+	
 	@RequestMapping(value="/allimages.spring", method=RequestMethod.GET)
 	public ModelAndView userHome(HttpServletRequest req,WebRequest wr)throws Exception{
-		log.debug("UserController.userHome");
+		log.debug("ImageController.userHome");
 
 		String pageNos=(String)req.getParameter("pageNo");
 		List<ImagePojo> l=is.viewAllImagesList();

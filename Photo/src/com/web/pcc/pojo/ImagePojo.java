@@ -20,7 +20,22 @@ public class ImagePojo {
 	private String commentidf;
 	private String comments;
 	
+	private String tagid;
+	private String tagName;
 	
+	
+	public String getTagid() {
+		return tagid;
+	}
+	public void setTagid(String tagid) {
+		this.tagid = tagid;
+	}
+	public String getTagName() {
+		return tagName;
+	}
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
 	public String getComment() {
 		return comment;
 	}

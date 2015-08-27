@@ -34,39 +34,7 @@
 			});
 		});
   </script>
- <!--  <script>
-
-		function showData(value){ 
-			xmlHttp=GetXmlHttpObject()
-			var url="viewComments.spring";
-			url=url+"?commentidf="+value;
-			xmlHttp.onreadystatechange=stateChanged 
-			xmlHttp.open("GET",url,true)
-			xmlHttp.send(null)
-			}
-			function stateChanged() { 
-			if(xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){ 
-			    var showdata = xmlHttp.responseText; 
-			    document.getElementById("Tbody").innerHTML= showdata;
-			    } 
-			}
-			function GetXmlHttpObject(){
-			var xmlHttp=null;
-			try {
-			  xmlHttp=new XMLHttpRequest();
-			 }
-			catch (e) {
-			 try  {
-			  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
-			  }
-			 catch (e)  {
-			  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-			  }
-			 }
-			return xmlHttp;
-			}
-  </script>
-   -->
+ 
   
 <script type="text/javascript">
 $(document).ready(function(){
@@ -78,29 +46,7 @@ $(document).ready(function(){
 
 </script>
  
-  <script type="text/javascript">
-  $(document).ready(function(){
-  $.ajax({ url: "allimages.spring?pageNo=1",
-        context: document.body,
-        success: function(){
-        	/* var myvar = imagePojoList.size();
-       	    var mytable = " <table cellpadding=\"10\" cellspacing=\"10\" ><tbody>";
-       	    mytable  += "<tr><th height='50'><b>  Image Name  </b></th> <br />   ";
-       	    var newslist = resp.imagePojoList;
-       	     for (var i = 0; i < myvar; i++) {
-       	    	 	  var contentitem =  newslist[i];
-       	    	 	  mytable += "</tr><tr>";
-       	    		  mytable += "<td>"+contentitem.imageName+"</td>";
-       	    		  mytable += "</tr><tr>";
-       	    	}     
-       		mytable += "</tr></tbody></table>";
-       		newsTable.innerHTML += mytable;
-            },
-            */
-        });
-  });
-  </script>
-    
+  
 <!-- head end -->
 </head>
 
