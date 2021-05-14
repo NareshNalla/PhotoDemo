@@ -1,4 +1,4 @@
-# PhotoDemo 
+# SecondHand Goods giveaway place. 
 
 A Spring + AngularJS web appliction.
 features:
